@@ -5,11 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-      - name: Hello world action step
-        id: hello
-        uses: actions/brain_waker_bot@v1
-        with:
-          who-to-greet: 'Mona the Octocat'
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
