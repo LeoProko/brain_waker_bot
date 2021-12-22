@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  bot_waker:
+    image: brain-waker
+    build: .
+    environment:
+      - TG_BRAIN_WAKER_TOKEN=${TG_BRAIN_WAKER_TOKEN}

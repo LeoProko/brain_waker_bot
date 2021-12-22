@@ -1,30 +1,37 @@
 import os
-import telebot
+from telebot.async_telebot import AsyncTeleBot
 import json
+import asyncio
 
 TOKEN = os.getenv('TG_BRAIN_WAKER_TOKEN')
-bot = telebot.TeleBot(TOKEN, parse_mode=None)
+async_bot = AsyncTeleBot(TOKEN, parse_mode=None)
 
-@bot.message_handler(commands=['start'])
-def start_command(message):
-    bot.reply_to(message, "Hi! You are my slave now.")
+@async_bot.message_handler(commands=['start'])
+async def start_command(message):
+    await async_bot.reply_to(message, "Hi! I am a Brain Waker bot.")
+    await async_bot.reply_to(message, (
+        "I'm going to send you random task "
+        "every one to three hours "
+        "to test your brain for fatigue."
+    ))
     data = []
-    read_file = open('subscribers.json', 'r')
-    data = json.load(read_file)
-    if not message.chat.id in data['subscribers']:
-        data['subscribers'].append(message.chat.id)
-    read_file.close()
-    write_file = open('subscribers.json', 'w')
-    json.dump(data, write_file, indent=4)
-    write_file.close()
-
-def init_subscribers_data():
+    with open('subscribers.json', 'r') as file:
+        data = json.load(file)
+        if not message.chat.id in data['subscribers']:
+            data['subscribers'].append(message.chat.id)
     with open('subscribers.json', 'w') as file:
-        json.dump({'subscribers' : []}, file, indent=4)
+        json.dump(data, file, indent=4)
 
-def main():
-    init_subscribers_data()
-    bot.infinity_polling()
+@async_bot.message_handler(commands=['stop'])
+async def start_command(message):
+    await async_bot.reply_to(message, "Bye, bye!")
+    data = []
+    with open('subscribers.json', 'r') as file:
+        data = json.load(file)
+        if message.chat.id in data['subscribers']:
+            data['subscribers'].remove(message.chat.id)
+    with open('subscribers.json', 'w') as file:
+        json.dump(data, file, indent=4)
 
-if __name__ == '__main__':
-    main()
+def handler():
+    asyncio.run(async_bot.polling())
