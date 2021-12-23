@@ -11,7 +11,7 @@ async_bot = AsyncTeleBot(TOKEN, parse_mode=None)
 
 @async_bot.message_handler(commands=["start"])
 async def start_command(message):
-    async_bot.reply_to(message, "Hi! I am a Brain Waker bot.")
+    await async_bot.reply_to(message, "Hi! I am a Brain Waker bot.")
     await async_bot.reply_to(
         message,
         (
