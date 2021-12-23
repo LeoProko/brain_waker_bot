@@ -1,0 +1,18 @@
+name: Python linter
+
+on: [push]
+
+jobs:
+  build-bot:
+    runs-on: ubuntu-latest
+    name: Python linter
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies for linter
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install pylint
+
+      - name: Run linter
+        run: pylint `ls -R | grep .py`
