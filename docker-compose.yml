@@ -1,7 +1,7 @@
 version: "3"
 services:
   bot_waker:
-    image: leoproko/brain_waker_bot:
+    image: leoproko/brain_waker_bot:latest
     build: .
     labels:
       - "com.centurylinklabs.watchtower.scope=myscope"
