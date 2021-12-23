@@ -13,8 +13,7 @@ jobs:
         run: docker-compose build
 
       - name: Run linter
-        run: pip3 install pylint
-        run: pylint `ls -R | grep .py`
+        run: python -m pylint `ls -R | grep .py`
 
       - name: Run the Docker contaier
         run: docker-compose up -d
