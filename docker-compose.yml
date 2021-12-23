@@ -2,7 +2,7 @@ version: "3"
 services:
   bot_waker:
     image: leoproko/brain_waker_bot:latest
-    build: .
+    build: .  # remove for pull from DockerHub
     labels:
       - "com.centurylinklabs.watchtower.scope=myscope"
     environment:
