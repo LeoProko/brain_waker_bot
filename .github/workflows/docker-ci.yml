@@ -22,3 +22,6 @@ jobs:
 
       - name: Run the Docker contaier
         run: docker-compose up -d
+
+      - name: Bot test
+        run: docker run
