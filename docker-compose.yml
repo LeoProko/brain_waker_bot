@@ -1,7 +1,17 @@
-version: "3.8"
+version: "3"
 services:
   bot_waker:
-    image: brain-waker
-    build: .
+    image: leoproko/brain_waker_bot:latest
+    build: .  # remove for pull from DockerHub
+    labels:
+      - "com.centurylinklabs.watchtower.scope=myscope"
     environment:
       - TG_BRAIN_WAKER_TOKEN=${TG_BRAIN_WAKER_TOKEN}
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 10 --scope myscope
+    labels:
+      - "com.centurylinklabs.watchtower.scope=myscope"
