@@ -1,11 +1,11 @@
-name: Docker image CI
+name: Python linter
 
 on: [push]
 
 jobs:
   build-bot:
     runs-on: ubuntu-latest
-    name: A docker job to build the bot
+    name: Python linter
     steps:
       - uses: actions/checkout@v2
 
