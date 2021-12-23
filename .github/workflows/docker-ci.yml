@@ -11,6 +11,6 @@ jobs:
       - name: Build the Docker image
         run: docker-compose build
       - name: Run linter
-        run: ./run_linter.sh
+        run: python3 -m pylint *.py
       - name: Run the Docker contaier
         run: docker-compose up -d
