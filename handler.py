@@ -8,10 +8,9 @@ from sender import send_tasks
 TOKEN = os.getenv("TG_BRAIN_WAKER_TOKEN")
 async_bot = AsyncTeleBot(TOKEN, parse_mode=None)
 
-
 @async_bot.message_handler(commands=["start"])
 async def start_command(message):
-    await async_bot.reply_to(message, "Hi! I am a Brain Waker bot.")
+    async_bot.reply_to(message, "Hi! I am a Brain Waker bot.")
     await async_bot.reply_to(
         message,
         (
@@ -21,7 +20,7 @@ async def start_command(message):
         ),
     )
     data = []
-    with open("subscribers.json", "r", encoding="utf-8") as file:
+    with open("subscribers.json", "r") as file:
         data = json.load(file)
         if message.chat.id not in data["subscribers"]:
             data["subscribers"].append(message.chat.id)
