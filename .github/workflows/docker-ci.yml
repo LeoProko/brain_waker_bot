@@ -1,0 +1,12 @@
+name: Docker image CI
+
+on: [push]
+
+jobs:
+    build-bot:
+        runs-on: ubuntu-latest
+        name: A docker job to build the bot
+        steps:
+        - uses: actions/checkout@v2
+        - name: Build the Docker image
+            run: docker-compose build && docker-compose up -d
