@@ -1,8 +1,9 @@
 name: Push Docker image to DockerHub
 
-on:
-  release:
-    types: [published]
+# on:
+#   release:
+#     types: [published]
+on: [push]
 
 jobs:
   docker-push:
