@@ -10,5 +10,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build the Docker image
         run: docker-compose build
+      - name: Run linter
+        run: ./run_linter.sh
       - name: Run the Docker contaier
         run: docker-compose up -d

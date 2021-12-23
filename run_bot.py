@@ -4,12 +4,13 @@ import json
 from handler import handler
 from sender import sender
 
+
 def init_subscribers_data():
-    with open('subscribers.json', 'w') as file:
-        json.dump({'subscribers' : []}, file, indent=4)
+    with open("subscribers.json", "w", encoding="utf-8") as file:
+        json.dump({"subscribers": []}, file, indent=4)
+
 
 def run_bot():
-    print('lol kek')
     init_subscribers_data()
 
     handler_thread = threading.Thread(target=handler)
@@ -21,5 +22,6 @@ def run_bot():
     handler_thread.join()
     sender_thread.join()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     run_bot()

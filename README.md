@@ -1,5 +1,5 @@
 # Brain waker bot
-*Wake up your brain*
+*Wake your brain up*
 
 This bot sends a random task every one to three hours to test your brain for fatigue
 
