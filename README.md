@@ -7,7 +7,7 @@ This Telegram bot sends a random easy task every one to three hours to test your
 
 You can test my bot by yourself https://t.me/brain_waker_bot
 
-Now this bot check your answer, just send questions :(
+Now this bot does not check your answer, just send the questions :(
 
 
 ## Structure
