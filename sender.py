@@ -25,9 +25,9 @@ def send_tasks() -> None:
             bot.send_message(chat_id, "Convert")
             bot.send_message(chat_id, get_random_hex() + " + " + get_random_hex())
             bot.send_message(chat_id, "from hexadecimal to decimal")
-    time.sleep(random.randint(60 * 60 * 1, 60 * 60 * 3))
 
 
 def sender() -> None:
     while True:
         send_tasks()
+        time.sleep(random.randint(60 * 60 * 1, 60 * 60 * 3))

@@ -3,6 +3,8 @@ import json
 import asyncio
 from telebot.async_telebot import AsyncTeleBot
 
+from sender import send_tasks
+
 TOKEN = os.getenv("TG_BRAIN_WAKER_TOKEN")
 async_bot = AsyncTeleBot(TOKEN, parse_mode=None)
 
@@ -25,6 +27,7 @@ async def start_command(message):
             data["subscribers"].append(message.chat.id)
     with open("subscribers.json", "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4)
+    send_tasks()
 
 
 @async_bot.message_handler(commands=["stop"])
