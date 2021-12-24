@@ -43,4 +43,8 @@ async def stop_command(message):
 
 
 def handler():
-    asyncio.run(async_bot.polling())
+    while True:
+        try:
+            asyncio.run(async_bot.polling())
+        except:
+            pass
